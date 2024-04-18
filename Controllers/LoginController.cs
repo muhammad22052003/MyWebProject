@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity.Data;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
 using RestSharp;
+using System.Configuration;
 using System.Net;
 using System.Reflection.Metadata.Ecma335;
 using WebProject.interfaces;
@@ -26,6 +30,18 @@ namespace WebProject.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            try
+            {
+                string connect = "server=mysql-container;port=3306;user=root;password=root;database=itransition_task4";
+                MySqlConnection mySqlConnection = new MySqlConnection(connect);
+                mySqlConnection.Open();
+                Console.WriteLine("Chotki");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             return View();
         }
 

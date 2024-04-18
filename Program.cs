@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using MySql.Data.MySqlClient;
 using Org.BouncyCastle.OpenSsl;
 using WebProject.interfaces;
 using WebProject.interfaces.auth;

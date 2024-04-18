@@ -1,8 +1,88 @@
-﻿@{
+﻿@model List<User>;
+@{
     ViewData["Title"] = "Home Page";
+    Layout = "_LayoutAuth";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form class="form-user-column" method="post">
+    <div class="table-wrapper">
+        <table class="text-center">
+            <thead>
+                <tr class="bordered-table">
+                    <td>Select</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Role</td>
+                    <td>Registreted</td>
+                    <td>Logined</td>
+                    <td>Status</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                    if (Model != null && Model.Count != 0)
+                    {
+                        for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    <input class="form-check-input" type="checkbox" name="email" value="@Model[i].Email" id="flexCheckDefault">
+                                </td>
+                                <td>
+                                    @Model[i].Name
+                                </td>
+                                <td>
+                                    @Model[i].Email
+                                </td>
+                                <td>
+                                    @Model[i].Role
+                                </td>
+                                <td>
+                                    @Model[i].RegistrationTime.ToShortDateString()
+                                </td>
+                                <td>
+                                    @Model[i].LastLoginTime.ToShortDateString()
+                                </td>
+                                <td>
+                                    @{
+                                        if (@Model[i].isBlocked == true)
+                                        {
+                                            <div>Blocked</div>
+                                        }
+                                        else
+                                        {
+                                            <div>UnLocked</div>
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+
+        <table class="text-center">
+            <tbody>
+                <tr>
+                    <td>
+                        <button asp-action="UnBlockUser" class="button-home-submit" type="submit">
+                            Unblock
+                        </button>
+                    </td>
+                    <td>
+                        <button asp-action="BlockUser" class="button-home-submit" type="submit">
+                            Block
+                        </button>
+                    </td>
+                    <td>
+                        <button asp-action="DeleteUser" class="button-home-submit" type="submit">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>

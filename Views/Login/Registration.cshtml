@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
+@using WebProject.Models.auth
+@model RegistrationModel
+@{
+    Layout = "_LayoutAuth";
+    ViewData["Title"] = "Registration";
+}
+
+<div class="register-form-control">
+    <h1 class="form-title">
+        <h1 class="form-title">@ViewData["Title"]</h1>
+        <form action="~/Login/Registration" method="post">
+            <div class="form-fields">
+                <div class="form-field">
+                    @if (Model.Errors != null && Model.Errors.ContainsKey("Name") != false)
+                    {
+                        <label class="text-danger">*@Model.Errors["Name"]</label>
+                    }
+                    <input type="text" name="Name" placeholder="Your Name" />
+                </div>
+                <div class="form-field">
+                    @if (Model.Errors != null && Model.Errors.ContainsKey("Email") != false)
+                    {
+                        <label class="text-danger">*@Model.Errors["Email"]</label>
+                    }
+                    <input type="email" name="Email" placeholder="Your Email" />
+                </div>
+                <div class="form-field">
+                    @if (Model.Errors != null && Model.Errors.ContainsKey("Password") != false)
+                    {
+                        <label class="text-danger">*@Model.Errors["Password"]</label>
+                    }
+                    <input type="password" name="Password" placeholder="Your Password" />
+                </div>
+                <div class="form-field">
+                    @if (Model.Errors != null && Model.Errors.ContainsKey("ConfirmPassword") != false)
+                    {
+                        <label class="text-danger">*@Model.Errors["ConfirmPassword"]</label>
+                    }
+                    <input type="password" name="ConfirmPassword" placeholder="Confirm Your Password" />
+                </div>
+            </div>
+
+            <div class="form-buttons">
+                <button class="button" type="submit" asp-action="Registration">Registration</button>
+                <div class="divider">OR</div>
+                <a href="~/Login/Login" class="button-google button ">Login</a>
+            </div>
+        </form>
+    </h1>
+</div>
+
+
+

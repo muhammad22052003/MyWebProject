@@ -1,0 +1,304 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto';
+}
+
+input {
+    height: 45px;
+    width: 100%;
+    font-size: 14px;
+    color: #385983;
+    line-height: 16px;
+    border: 2px solid #E9F2FF;
+    border-radius: 5px;
+    padding-left: 25px;
+}
+
+    input:focus {
+        border: 2px solid #C1D9FD;
+        outline: none;
+    }
+
+main {
+    background: #F1F5FE;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    position: absolute;
+    width: 2000px;
+    height: 2000px;
+    border-radius: 50%;
+    z-index: 0;
+    background: #F1FAFF;
+    box-shadow: 0px 4px 70px 6px rgba(217, 229, 255, 0.25);
+    animation-name: fadeFormCircle;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeFormCircle {
+    0% {
+        width: 2000px;
+        height: 2000px;
+    }
+
+    25% {
+        width: 1500px;
+        height: 1500px;
+    }
+
+    50% {
+        width: 1000px;
+        height: 1000px;
+    }
+
+    75% {
+        width: 750px;
+        height: 750px;
+    }
+
+    100% {
+        width: 534px;
+        height: 534px;
+    }
+}
+
+.register-form-control {
+    position: relative;
+    max-width: 415px;
+    width: 100%;
+    z-index: 2;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 50px rgba(217,229,255,0.7);
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 38px;
+    padding-bottom: 38px;
+    animation-name: fadeForm;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.form-user-column {
+    position: absolute;
+    max-width: 100%;
+    min-width: 80%;
+    max-height: 100%;
+    margin-bottom: 5%;
+}
+
+.user-column {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    z-index: 2;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 50px rgba(217,229,255,0.7);
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 38px;
+    padding-bottom: 38px;
+    animation-name: fadeForm;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    margin-bottom: 0.8%;
+}
+
+.table-wrapper {
+    max-width: 100%;
+}
+
+table {
+    position: relative;
+    border: 1px solid #0D6CF2;
+    border-collapse: collapse;
+    position: relative;
+    border-collapse: co;
+    max-width: 100%;
+    width: 100%;
+    z-index: 2;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 50px rgba(217,229,255,0.7);
+    border-spacing: 30px;
+    animation-name: fadeForm;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    margin-bottom: 0.8%;
+}
+
+thead {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0D6CF2;
+}
+
+tbody {
+    font-size: 12px;
+}
+
+th, tr, td {
+    border: 1px solid #0D6CF2;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.bordered-table {
+    border: 1px solid #0D6CF2;
+}
+
+tbody {
+    border: 1px solid black;
+}
+
+.user-values-field {
+    font-size: 14px;
+    margin-bottom: 4%;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.user-form-column-header {
+    font-size: 20px;
+    margin-bottom: 2%;
+}
+
+.checkbox-data-user {
+    margin-left: 2%;
+}
+
+@keyframes fadeForm {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: .25;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    75% {
+        opacity: .75;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.form-title {
+    color: #30507D;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 38px;
+}
+
+.form-field {
+    margin-bottom: 13px;
+}
+
+.button-home-submit {
+    border: #30507D;
+    text-align: center;
+    font-size: 16px;
+    color: #FFF;
+    background: #247FFF;
+    border-color: #30507D;
+    border-radius: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+    .button-home-submit:hover {
+        cursor: pointer;
+        background-color: #0D6CF2;
+    }
+
+.button {
+    font-weight: bold;
+    display: block;
+    height: 35px;
+    background: #247FFF;
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+a.button {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0D6CF2;
+}
+
+.button-google {
+    line-height: 35px;
+    color: #C6CFDC;
+    background: #F2F6FF;
+    text-align: center;
+}
+
+    .button-google:hover {
+        color: #FFF;
+        background: #E2E6F0;
+    }
+
+.divider {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    columns: #405087;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.text-danger {
+    color: #904748;
+    font-size: 11px;
+    line-height: 25px;
+}
+
+.text-center {
+    text-align: center;
+}

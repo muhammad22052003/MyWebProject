@@ -23,3 +23,18 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "MyWebProject.dll"]
+
+FROM mysql:latest
+MAINTAINER yourname@example.com
+
+# Определите переменные окружения
+ENV MYSQL_DATABASE=mydb
+ENV MYSQL_USER=myuser
+ENV MYSQL_PASSWORD=mypassword
+ENV MYSQL_ROOT_PASSWORD=rootpassword
+
+# Добавьте SQL-файл с вашей схемой базы данных
+ADD itransition_task4.sql /docker-entrypoint-initdb.d
+
+# Откройте порт 3306
+EXPOSE 3306

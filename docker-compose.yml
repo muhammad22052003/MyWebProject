@@ -1,0 +1,34 @@
+version: "3.9"
+networks:
+  deploy-webproject:
+    driver: bridge
+services:
+  app:
+    container_name: webproject
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - deploy-webproject
+    depends_on:
+      - mysql-db
+  mysql-db:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mysql
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_USER: root
+      MYSQL_DATABASE: itransition_task4
+    ports:
+      - "3306:3306"
+    networks:
+      - deploy-webproject
+    #volumes:
+     # - mysql-data:/var/lib/mysql/data
+volumes:
+  mysql-data:

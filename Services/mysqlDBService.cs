@@ -20,6 +20,8 @@ namespace WebProject.Services
 
         private async Task OpenConnection()
         {
+            Console.WriteLine(_connection.ConnectionString);
+
             if (_connection.State == System.Data.ConnectionState.Closed)
             {
                 await _connection.OpenAsync();
@@ -164,6 +166,8 @@ namespace WebProject.Services
             command = new MySqlCommand(getDataQuery.ToString(), GetConnection());
 
             adapter = new MySqlDataAdapter(command);
+
+            Console.WriteLine(_connection.ConnectionString);
 
             await adapter.FillAsync(dataTable);
 

@@ -1,7 +1,7 @@
 ﻿version: "3.9"
-#networks:
-    #webproject-dev:
-        #driver: bridge
+networks:
+    webproject-dev:
+        driver: bridge
 services: 
     app:
         container_name: mywebproject-cont
@@ -10,13 +10,14 @@ services:
             dockerfile: Dockerfile
         ports:
             - "8080:8080"
-        #networks:
-           # - webproject-dev
+        networks:
+            - webproject-dev
         depends_on:
             - mysql-db
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
     mysql-db:
+        command: --default-authentication-plugin=mysql_native_password
         image: mysql:latest
         ports:
           - "3306:3306"
@@ -30,12 +31,29 @@ services:
             MYSQL_ROOT_PASSWORD: root@1234
             MYSQL_USER: muhammad
             MYSQL_PASSWORD: root@4321
-            MYSQL_DATABASE: 'itransition_task4'
-        #networks:
-          #- webproject-dev        
+            MYSQL_DATABASE: itransition_task4
+            MYSQL_TCP_PORT: 3306
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        networks:
+          - webproject-dev        
         volumes:
           - mysql-data:/var/lib/mysql
           - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 volumes:
     mysql-data:
+
+    services:
+  db:
+    image: mariadb:10.6
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: notSecureChangeMe
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
             

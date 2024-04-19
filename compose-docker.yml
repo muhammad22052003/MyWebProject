@@ -1,7 +1,7 @@
 ﻿version: "3.9"
-networks:
-    webproject-dev:
-        driver: bridge
+#networks:
+    #webproject-dev:
+        #driver: bridge
 services: 
     app:
         container_name: mywebproject-cont
@@ -10,26 +10,32 @@ services:
             dockerfile: Dockerfile
         ports:
             - "8080:8080"
-        networks:
-            - webproject-dev
+        #networks:
+           # - webproject-dev
         depends_on:
             - mysql-db
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
     mysql-db:
+        image: mysql:latest
+        ports:
+          - "3306:3306"
+        restart: always
         container_name: mysql-container
         build:
             context: .
             dockerfile: Dockerfile
-        image: mysql
         environment:
             MYSQL_ROOT_USER: root
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: itransition_task4
-        ports:
-          - "3306:3306"
-        networks:
-          - webproject-dev        
+            MYSQL_ROOT_PASSWORD: root@1234
+            MYSQL_USER: muhammad
+            MYSQL_PASSWORD: root@4321
+            MYSQL_DATABASE: 'itransition_task4'
+        #networks:
+          #- webproject-dev        
         volumes:
-          - mysql-data:/var/lib.mysql/data
+          - mysql-data:/var/lib/mysql
+          - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 volumes:
     mysql-data:
             

@@ -4,6 +4,9 @@ USER app
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
+EXPOSE 3306
+EXPOSE 3307
+EXPOSE 33060
 
 # Образ для сборки
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
@@ -14,14 +17,6 @@ RUN dotnet restore "./MyWebProject.csproj"
 COPY . .
 WORKDIR "/src"
 RUN dotnet build "./MyWebProject.csproj" -c $BUILD_CONFIGURATION -o /app/build
-
-# Образ MySQL
-FROM mysql:latest
-COPY ./itransition_task4.sql /docker-entrypoint-initdb.d/
-ENV MYSQL_DATABASE=itransition_task4
-ENV MYSQL_USER=root
-ENV MYSQL_PASSWORD=root
-ENV MYSQL_ROOT_PASSWORD=root
 
 # Публикация
 FROM build AS publish

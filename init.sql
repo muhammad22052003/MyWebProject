@@ -21,15 +21,13 @@ SET time_zone = "+00:00";
 -- Database: `itransition_task4`
 --
 
-CREATE DATABASE itransition_task4;
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
 --
 
-CREATE TABLE `itransition_task4.users` (
+CREATE TABLE itransition_task4.users (
   `id` varchar(64) NOT NULL,
   `name` varchar(32) NOT NULL,
   `hashPassword` varchar(64) NOT NULL,
@@ -44,7 +42,7 @@ CREATE TABLE `itransition_task4.users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `hashPassword`, `email`, `role`, `registrationtime`, `lastLogintime`, `isblocked`) VALUES
+INSERT INTO itransition_task4.users (`id`, `name`, `hashPassword`, `email`, `role`, `registrationtime`, `lastLogintime`, `isblocked`) VALUES
 ('323cd399aa75404eb48515662d29dbb4', 'Muhammad', '67B176705B46206614219F47A05AEE7AE6A3EDBE850BBBE214C536B989AEA4D2', 'muhammadarch22@gmail.com', 'admin', '2024-04-18 11:31:43', '2024-04-18 11:31:47', 0),
 ('4e2940475c0f42bcbf11650784febb02', 'Muhammad', '77ED20D9EA0DF1C32D48E20C432D833738479038C7DBC6EF37CC5EFE3C5AA920', 'muh22@gmail.cim', 'admin', '2024-04-18 00:34:02', '2024-04-18 00:34:02', 0),
 ('5815148aefc94cd6b4ae137e6e70d63e', 'Komiljon', 'EC59622B9B347DE4BD8DD210271F7D3B02485A9F572566131C92F0314D592587', 'muhammaduktamov22@gmail.com', 'admin', '2024-04-18 00:33:08', '2024-04-18 00:33:08', 0);
@@ -56,7 +54,7 @@ INSERT INTO `users` (`id`, `name`, `hashPassword`, `email`, `role`, `registratio
 --
 -- Indexes for table `users`
 --
-ALTER TABLE `users`
+ALTER TABLE itransition_task4.users
   ADD PRIMARY KEY (`id`);
 COMMIT;
 

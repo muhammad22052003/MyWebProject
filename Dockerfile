@@ -4,6 +4,7 @@ USER app
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
+EXPOSE 33060
 
 # Образ для сборки
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
@@ -18,7 +19,7 @@ RUN dotnet build "./MyWebProject.csproj" -c $BUILD_CONFIGURATION -o /app/build
 # Публикация
 FROM build AS publish
 RUN dotnet publish "./MyWebProject.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
-
+ 
 # Конечный образ
 FROM base AS final
 WORKDIR /app

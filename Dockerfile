@@ -36,4 +36,5 @@ EXPOSE 3306
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+CMD ["mysqld"]
 ENTRYPOINT ["dotnet", "MyWebProject.dll"]

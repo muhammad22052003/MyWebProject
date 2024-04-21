@@ -1,59 +1,45 @@
-﻿version: "3.9"
+﻿version: '3.9'
 networks:
     webproject-dev:
         driver: bridge
-services: 
-    app:
-        container_name: mywebproject-cont
-        build:
-            context: .
-            dockerfile: Dockerfile
-        ports:
-            - "8080:8080"
-        networks:
-            - webproject-dev
-        depends_on:
-            - mysql-db
-        environment:
-            - ASPNETCORE_ENVIRONMENT=Development
-    mysql-db:
-        command: --default-authentication-plugin=mysql_native_password
-        image: mysql:latest
-        ports:
-          - "3306:3306"
-        restart: always
-        container_name: mysql-container
-        build:
-            context: .
-            dockerfile: Dockerfile
-        environment:
-            MYSQL_ROOT_USER: root
-            MYSQL_ROOT_PASSWORD: root@1234
-            MYSQL_USER: muhammad
-            MYSQL_PASSWORD: root@4321
-            MYSQL_DATABASE: itransition_task4
-            MYSQL_TCP_PORT: 3306
-            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-        networks:
-          - webproject-dev        
-        volumes:
-          - mysql-data:/var/lib/mysql
-          - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-volumes:
-    mysql-data:
-
-    services:
-  db:
-    image: mariadb:10.6
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: notSecureChangeMe
-
-  phpmyadmin:
-    image: phpmyadmin
-    restart: always
+services:
+  app:
+    container_name: mywebproject-cont
+    build:
+        context: .
+        dockerfile: Dockerfile
     ports:
-      - 8080:80
+        - "8080:8080"
+    networks:
+        - webproject-dev
+    depends_on:
+        - mysql-db
     environment:
-      - PMA_ARBITRARY=1
+        - ASPNETCORE_ENVIRONMENT=Development
+  mysql-db:
+    image: mysql:latest
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: itransition_task4
+      MYSQL_USER: muhammad
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql-db
+      PMA_PORT: 3306
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql-db
+volumes:
+  mysql_data:
+
             

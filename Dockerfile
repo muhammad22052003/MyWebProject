@@ -19,19 +19,6 @@ RUN dotnet build "./MyWebProject.csproj" -c $BUILD_CONFIGURATION -o /app/build
 FROM build AS publish
 RUN dotnet publish "./MyWebProject.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-# Используйте официальный образ MySQL 8.0
-FROM mysql:8.3
-# Установите пароль для пользователя root
-ENV MYSQL_ROOT_PASSWORD=root
-# Создайте базу данных и пользователя
-ENV MYSQL_DATABASE=itransition_task4
-ENV MYSQL_USER=user
-ENV MYSQL_PASSWORD=root
-# Добавьте ваш скрипт инициализации в папку /docker-entrypoint-initdb.d
-ADD DB_Setup.sql /docker-entrypoint-initdb.d
-# Откройте порт для подключения к MySQL
-EXPOSE 3306
-
 # Конечный образ
 FROM base AS final
 WORKDIR /app

@@ -1,6 +1,6 @@
 ﻿services:
   - name: mysql
-    type: private
+    type: web
     env:
       MYSQL_DATABASE: itransition_task4
       MYSQL_USER: muhammad

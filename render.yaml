@@ -10,8 +10,6 @@ services:
         - webproject-dev
     depends_on:
         - mysql-db
-    environment:
-        - ASPNETCORE_ENVIRONMENT=Development
   mysql-db:
     image: mysql:latest
     container_name: mysql-db

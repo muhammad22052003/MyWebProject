@@ -1,36 +1,18 @@
-﻿version: '3.9'
-services:
-    container_name: mywebproject-cont
-    build:
-        context: .
-        dockerfile: Dockerfile
-    ports:
-        - "8080:8080"
-    networks:
-        - webproject-dev
-    depends_on:
-        - mysql-db
-  mysql-db:
-    image: mysql:latest
-    container_name: mysql-db
-    environment:
-      MYSQL_ROOT_PASSWORD: root
+﻿services:
+  - name: mysql
+    type: private
+    env:
       MYSQL_DATABASE: itransition_task4
       MYSQL_USER: muhammad
       MYSQL_PASSWORD: root
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    environment:
-      PMA_HOST: mysql-db
-      PMA_PORT: 3306
-    ports:
-      - "8081:80"
-    depends_on:
-      - mysql-db
-            
+      MYSQL_ROOT_PASSWORD: root
+    disk:
+      name: mysql
+      mountPath: /var/lib/mysql
+      sizeGB: 1
+  - name: phpmyadmin
+    type: web
+    env:
+      PMA_HOST: mysql:3306
+      PMA_USER: muhammad
+      PMA_PASSWORD: root

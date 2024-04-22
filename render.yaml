@@ -1,9 +1,5 @@
 ﻿version: '3.9'
-networks:
-    webproject-dev:
-        driver: bridge
 services:
-  app:
     container_name: mywebproject-cont
     build:
         context: .
@@ -39,7 +35,4 @@ services:
       - "8081:80"
     depends_on:
       - mysql-db
-volumes:
-  mysql_data:
-
             

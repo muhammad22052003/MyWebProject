@@ -14,7 +14,7 @@ namespace WebProject.Repositories
 
         public async Task<bool> Add(User user)
         {
-            var users = await _dbService.GetData<User>("users", $"email = \"{user.Email}\"");
+            var users = await _dbService.GetData<User>("users", $"email = \'{user.Email}\'");
 
             if(users.Count >= 1) return false;
 
@@ -25,7 +25,7 @@ namespace WebProject.Repositories
 
         public async Task DeleteByEmail(string email)
         {
-            List<User>? users = (await _dbService.GetData<User>("users", $"email = \"{email}\""))?.Cast<User>().ToList();
+            List<User>? users = (await _dbService.GetData<User>("users", $"email = \'{email}\'"))?.Cast<User>().ToList();
 
             IModel? user = users.Find(x => x.Email == email);
 
@@ -37,7 +37,7 @@ namespace WebProject.Repositories
 
         async public Task<List<User>?> GetByEmail(string email)
         {
-            List<User>? users = (await _dbService.GetData<User>("users", $"email = \"{email}\""))?.Cast<User>().ToList();
+            List<User>? users = (await _dbService.GetData<User>("users", $"email = \'{email}\'"))?.Cast<User>().ToList();
 
             return users;
         }

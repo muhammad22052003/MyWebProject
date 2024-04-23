@@ -24,7 +24,7 @@ internal class Program
         {
             ICustomPasswordHasher customPasswordHasher = new CustomPasswordHasher();
             IJwtProvider _jwtProvider = new JwtProvider(configuration: builder.Configuration);
-            IUserRepository _userRepository = new UserRepository(new mysqlDBService(builder.Configuration.GetValue<string>("mysql:connectionString")));
+            IUserRepository _userRepository = new UserRepository(new postgressDBService(builder.Configuration.GetValue<string>("npgsql:connectionString")));
 
             return new UserService(customPasswordHasher, _jwtProvider, _userRepository);
         });

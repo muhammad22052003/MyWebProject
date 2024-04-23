@@ -246,10 +246,29 @@ tbody {
     padding-bottom: 10px;
 }
 
-    .button-home-submit:hover {
-        cursor: pointer;
-        background-color: #0D6CF2;
-    }
+.button-home-del {
+    border: #30507D;
+    text-align: center;
+    font-size: 16px;
+    color: #FFF;
+    background: #c43e13;
+    border-color: #30507D;
+    border-radius: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.button-home-del:hover {
+    cursor: pointer;
+    background-color: #b03610;
+}
+
+.button-home-submit:hover {
+    cursor: pointer;
+    background-color: #0D6CF2;
+}
 
 .button {
     font-weight: bold;
@@ -278,10 +297,10 @@ a.button {
     text-align: center;
 }
 
-    .button-google:hover {
-        color: #FFF;
-        background: #E2E6F0;
-    }
+.button-google:hover {
+color: #FFF;
+background: #E2E6F0;
+}
 
 .divider {
     font-weight: 500;
